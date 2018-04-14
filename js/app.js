@@ -1,116 +1,85 @@
-(function calculator() {
+window.onload = function(Calculadora){
+	pantalla=document.getElementById("display");
+}
+x="0";//número en pantalla
+xi=1;//inicia número en pantalla
+coma=0;//punto decimal
+ni=0;//número en espera
+op="no";//operación en curso
 
-  var el = function(element) {
-    if (element.charAt(0) === "#") {
-      return document.querySelector(element);
-    }
-    return document.querySelectorAll(element);
-  };
+function numero(xx){//toma número clickeado
+		if(parseInt(x.length) < 8){
+			if(x=="0" || xi==1){
+				pantalla.innerHTML=xx;
+				x=xx;
+				if(xx=="."){//captura el punto
+					pantalla.innerHTML="0.";
+					x=xx;
+					coma=1;
+				}
+			}
+			else{
+				if(xx=="." && coma==0){
+					pantalla.innerHTML+=xx;
+					x+=xx;
+					coma=1;//cambia estado decimal
+				}
+				else if(xx=="." && coma==1){}//previene que se agreguen mas puntos
+				else{
+					pantalla.innerHTML+=xx;
+					x+=xx
+				}
 
-  // Variables
-  var display = el("#display"),
-    equals = el(".igual"),
-    nums = el(".tecla"),
-    ops = el(".ops"),
-    theNum = "",
-    oldNum = "",
-    resultNum,
-    operator;
+			}
+			xi=0//el número esta iniciado y se puede ampliar
+		}
+	}
 
-  var setNum = function() {
-    console.log(this);
-    if (resultNum) {
-      theNum = this.alt;
-      resultNum = "";
-    } else {
-      theNum += this.alt;
-    }
-    display.innerHTML = theNum.substring(0, 8);
-  };
+function operador(s){
+	igual();//si hay algo pendiente lo hara primero
+	ni=x//primer número en espera
+	op=s;//guarda tipo de operación
+	pantalla.innerHTML="";
+	xi=1;
+}
 
-  var moveNum = function() {
-    oldNum = theNum;
-    theNum = "";
-    operator = this.id;
-    console.log(this);
-    equals.alt = "";
-  };
+function igual(){
+	if(op=="no"){
+		pantalla.innerHTML=x;
+	}
+	else{
+		sl=ni+op+x;//operación de dos números en cadena
+		sol=eval(sl)//conversión de cadena
+		sol=sol.toString()
+		sol=sol.substring(0,8)
+		pantalla.innerHTML=sol
+		x=sol;//se guarda solución
+		op="no";//no hay nada pendidente
+		xi=1;
+	}
+}
 
-  var displayNum = function() {
-    oldNum = parseFloat(oldNum);
-    theNum = parseFloat(theNum);
+function raiz(){
+	x=Math.sqrt(x)//opera raiz cuadrada
+	x=x.toString()
+	x=x.substring(0,8)
+	pantalla.innerHTML=x;
+	op="no";
+	xi=1;
+}
 
-    console.log(operator);
+function signo(){
+	nx=Number(x);
+	nx=-nx;//se le agrega el negativo
+	x=String(nx);
+	pantalla.innerHTML=x;
+	xi=1;
+}
 
-//Operadores
-    switch (operator) {
-      case "mas":
-        resultNum = oldNum + theNum;
-        break;
-
-      case "menos":
-        resultNum = oldNum - theNum;
-        break;
-
-      case "por":
-        resultNum = oldNum * theNum;
-        break;
-
-      case "dividido":
-        resultNum = oldNum / theNum;
-        break;
-
-      case "signo":
-        resultNum = oldNum * (-1);
-        break;
-
-      case "raiz":
-        resultNum = Math.sqrt(oldNum);
-        break;
-
-      default:
-        resultNum = theNum;
-    }
-
-    if (!isFinite(resultNum)) {
-      if (isNaN(resultNum)) {
-        resultNum = "Error";
-      } else {
-        resultNum = "Error";
-        el('#calculator').classList.add("broken");
-        el('#reset').classList.add("show");
-      }
-    }
-
-
-    console.log(resultNum);
-    resultNum = resultNum.toString();
-    display.innerHTML = resultNum.substring(0,8);
-    equals[0].alt = resultNum;
-    oldNum = 0;
-    theNum = resultNum.substring(0,8);
-  };
-
-  var clearAll = function() {
-    oldNum = "";
-    theNum = "";
-    display.innerHTML = "0";
-    equals[0].alt =  resultNum;
-  };
-
-// Evento para saber que número fue presionado
-  for (var i = 0, l = nums.length; i < l; i++) {
-    nums[i].onclick = setNum;
-  }
-
-// Evento para saber que operador fue presionado
-  for (var i = 0, l = ops.length; i < l; i++) {
-    console.log(ops);
-    ops[i].onclick = moveNum;
-  }
-
-  equals[0].onclick = displayNum;
-
-  el("#on").onclick = clearAll;
-
-}());
+function on(){
+	pantalla.innerHTML=0;
+	x="0";
+	coma=0;//pasa todos los valores a 0
+	ni=0
+	op="no"
+}

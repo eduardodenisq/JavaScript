@@ -1,6 +1,11 @@
 *{
   box-sizing: border-box;
 }
+
+.tecla:active {
+  transform: scale(0.90,0.90);
+}
+
 body{
   background-image: url("../image/fondo.jpg");
   background-size: cover;
@@ -118,8 +123,6 @@ body{
   font-weight: bold;
 }
 
-
-
 .titulo-container{
   width: 100%;
   height: 15%;
@@ -158,21 +161,6 @@ body{
   font-size: 1.1rem;
 }
 
-.tecla:active {
-  transform: translateY(4px);
-}
-
-.ops:active {
-  transform: translateY(4px);
-}
-
-.on:active {
-  transform: translateY(4px);
-}
-
-.igual:active {
-  transform: translateY(4px);
-}
 
 @media (max-width: 1000px){
 

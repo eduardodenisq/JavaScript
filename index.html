@@ -25,68 +25,38 @@
       </div>
 
       <div class="teclado">
-        <img src="image/ON.png" alt="On" class="on" id="on"/>
-        <img src="image/sign.png" alt="signo" class="ops" id="sign"/>
-        <img src="image/raiz.png" alt="raiz" class="ops" id="raiz"/>
-        <img src="image/dividido.png" alt="dividido" class="ops" id="dividido"/>
+        <img src="image/ON.png" alt="On" class="tecla" id="on" onclick="on()"/>
+        <img src="image/sign.png" alt="signo" class="tecla" id="sign" onclick="signo()"/>
+        <img src="image/raiz.png" alt="raiz" class="tecla" id="raiz" onclick="raiz()"/>
+        <img src="image/dividido.png" alt="dividido" class="tecla divide" id="dividido" onclick="operador('/')"/>
 
-        <img src="image/7.png" alt="7" class="tecla" id="7"/>
-        <img src="image/8.png" alt="8" class="tecla" id="8"/>
-        <img src="image/9.png" alt="9" class="tecla" id="9"/>
-        <img src="image/por.png" alt="por" class="ops" id="por"/>
+        <img src="image/7.png" alt="7" class="tecla" id="7" onclick="numero('7')"/>
+        <img src="image/8.png" alt="8" class="tecla" id="8" onclick="numero('8')"/>
+        <img src="image/9.png" alt="9" class="tecla" id="9" onclick="numero('9')"/>
+        <img src="image/por.png" alt="por" class="tecla multiplica" id="por" onclick="operador('*')"/>
 
-        <img src="image/4.png" alt="4" class="tecla" id="4"/>
-        <img src="image/5.png" alt="5" class="tecla" id="5"/>
-        <img src="image/6.png" alt="6" class="tecla" id="6"/>
-        <img src="image/menos.png" alt="menos" class="ops" id="menos"/>
+        <img src="image/4.png" alt="4" class="tecla" id="4" onclick="numero('4')"/>
+        <img src="image/5.png" alt="5" class="tecla" id="5" onclick="numero('5')"/>
+        <img src="image/6.png" alt="6" class="tecla" id="6" onclick="numero('6')"/>
+        <img src="image/menos.png" alt="menos" class="tecla resta" id="menos" onclick="operador('-')"/>
 
-        <div class="row">
-          <div class="col1">
-            <img src="image/1.png" alt="1" class="tecla" id="1"/>
-            <img src="image/2.png" alt="2" class="tecla" id="2"/>
-            <img src="image/3.png" alt="3" class="tecla" id="3"/>
-            <img src="image/0.png" alt="0" class="tecla" id="0"/>
-            <img src="image/punto.png" alt="." class="tecla" id="punto"/>
-            <img src="image/igual.png" alt="igual" class="igual" id="igual"/>
-          </div>
-          <div class="col2">
-            <img src="image/mas.png" alt="mas" class="ops" id="mas"/>
-          </div>
-<!--
-      <div class="teclado">
-        <img src="image/ON.png" alt="On" class="clear boton" id="clear"/>
-        <img src="image/sign.png" alt="signo" class="tecla boton" id="sign"/>
-        <img src="image/raiz.png" alt="raiz" class="ops boton" id="raiz"/>
-        <img src="image/dividido.png" alt="dividido" class="ops boton" id="dividido"/>
+      <div class="row">
+        <div class="col1">
+          <img src="image/1.png" alt="1" class="tecla" id="1" onclick="numero('1') " />
+          <img src="image/2.png" alt="2" class="tecla" id="2" onclick="numero('2')"/>
+          <img src="image/3.png" alt="3" class="tecla" id="3" onclick="numero('3')"/>
 
-        <img src="image/7.png" alt="7" class="num boton" id="7" onclick="presionar_boton();" />
-        <img src="image/8.png" alt="8" class="num boton" id="8"/>
-        <img src="image/9.png" alt="9" class="num boton" id="9"/>
-        <img src="image/por.png" alt="por" class="ops boton" id="por"/>
-
-        <img src="image/4.png" alt="4" class="num boton" id="4"/>
-        <img src="image/5.png" alt="5" class="num boton" id="5"/>
-        <img src="image/6.png" alt="6" class="num boton" id="6"/>
-        <img src="image/menos.png" alt="menos" class="ops boton" id="menos"/>
-
-        <div class="row">
-          <div class="col1">
-            <img src="image/1.png" alt="1" class="num boton" id="1"/>
-            <img src="image/2.png" alt="2" class="num boton" id="2"/>
-            <img src="image/3.png" alt="3" class="num boton" id="3"/>
-            <img src="image/0.png" alt="0" class="num boton" id="0"/>
-            <img src="image/punto.png" alt="." class="num boton" id="punto"/>
-            <img src="image/igual.png" alt="igual" class="equals boton" id="igual"/>
-          </div>
-          <div class="col2">
-            <img src="image/mas.png" alt="mas" class="ops boton" id="mas"/>
-          </div>
--->
+          <img src="image/0.png" alt="0" class="tecla" id="0" onclick="numero('0')"/>
+          <img src="image/punto.png" alt="punto" class="tecla" id="punto" onclick="numero('.')"/>
+          <img src="image/igual.png" alt="igual" class="tecla" id="igual" onclick="igual()"/>
         </div>
+        <div class="col2">
+          <img src="image/mas.png" alt="mas" class="tecla suma" id="mas" onclick="operador('+')"/>
+        </div>
+
       </div>
     </div>
-
-
+  </div>
 
     <div class="container-libreta">
       <div class="libreta">
@@ -108,7 +78,6 @@
         </div>
       </div>
     </div>
-
 
   </div>
   <script src="js/app.js"></script>
